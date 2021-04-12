@@ -21,8 +21,13 @@ pip install -r requirements.txt
 ```
 4. You can run the server by using any one of the following commands
 ```bash
-python pix2tex.py
+python app.py
 ```
+5. Finally try ocr by posting a screenshot
+```bash
+curl -F "file=@tmp.jpeg" http://localhost:8080/predict/latex
+```
+
 
 # pix2tex - LaTeX OCR
 The goal of this project is to create a learning based system that takes an image of a math formula and returns corresponding LaTeX code. As a physics student I often find myself writing down Latex code from a reference image. I wanted to streamline my workflow and began looking into solutions, but besides the Freemium [Mathpix](https://mathpix.com/) I could not find anything ready-to-use that runs locally. That's why I decided to create it myself.
