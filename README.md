@@ -12,7 +12,7 @@ cd 'ocr-test'
 ```
 2. (Optional) For ease of reproducibility I like to keep my project libraries seperate. Feel free to omit this if you like.
 ```bash
-python -m virtualenv .venv
+python3.9 -m virtualenv .venv
 source .venv/bin/activate
 ```
 3. This will install all the libraries you need to run the server.
