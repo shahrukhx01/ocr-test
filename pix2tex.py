@@ -35,9 +35,9 @@ def initialize(arguments):
     return args, model, tokenizer
 
 
-def call_model(args, model, tokenizer):
+def call_model(args, model, tokenizer, img):
     encoder, decoder = model.encoder, model.decoder
-    img = ImageGrab.grabclipboard()
+    #img = ImageGrab.grabclipboard()
     if img is None:
         print('Copy an image into the clipboard.')
         return
@@ -56,7 +56,7 @@ def call_model(args, model, tokenizer):
         dec = decoder.generate(torch.LongTensor([args.bos_token])[:, None].to(device), args.max_seq_len,
                                eos_token=args.eos_token, context=encoded.detach(), temperature=args.temperature)
         pred = post_process(token2str(dec, tokenizer)[0])
-    print(pred, '\n')
+    #print(pred, '\n')
     df = pd.DataFrame([pred])
     df.to_clipboard(index=False, header=False)
     if args.show:
@@ -64,9 +64,10 @@ def call_model(args, model, tokenizer):
             tex2pil([f'$${pred}$$'])[0].show()
         except Exception as e:
             print(e)
+    return pred
 
 
-if __name__ == "__main__":
+def get_prediction(img):
     parser = argparse.ArgumentParser(description='Use model', add_help=False)
     parser.add_argument('-t', '--temperature', type=float, default=.333, help='Softmax sampling frequency')
     parser.add_argument('-c', '--config', type=str, default='settings/config.yaml')
@@ -82,8 +83,9 @@ if __name__ == "__main__":
         os.chdir(latexocr_path)
 
     args, model, tokenizer = initialize(args)
-    while True:
+    return call_model(args, model, tokenizer, img)
+    """while True:
         instructions = input('Press ENTER to predict the LaTeX code for the image in the memory. Type "x" to stop the program. ')
         if instructions.strip().lower() == 'x':
             break
-        call_model(args, model, tokenizer)
+        call_model(args, model, tokenizer)"""
