@@ -13,6 +13,5 @@ numpy>=1.19.5
 Pillow>=8.1.0
 PyYAML>=5.4.1
 torchtext>=0.6.0
-albumentations
 pandas>=1.0.0
 git+https://github.com/rwightman/pytorch-image-models.git@ca9b078ac7b5058d6d8d3db0fa6b30916b8fa113
