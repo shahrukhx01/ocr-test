@@ -1,3 +1,4 @@
+https://download.pytorch.org/whl/cpu/torch-1.5.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
 tqdm>=4.47.0
 munch>=2.5.0
 torchvision>=0.8.1
@@ -15,4 +16,3 @@ torchtext>=0.6.0
 albumentations>=0.5.2
 pandas>=1.0.0
 git+https://github.com/rwightman/pytorch-image-models.git@ca9b078ac7b5058d6d8d3db0fa6b30916b8fa113
-https://download.pytorch.org/whl/cpu/torch-1.5.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
